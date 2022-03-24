@@ -7,9 +7,10 @@ class Player: #list of gestures used in game
         self.gestures = ['rock', 'paper', 'scissors','lizard', 'spock'] 
         self.selected_gesture = ""
         self.player_one = None
-        self. player_two = None
+        self.player_two = None
        
-    def choose_gestures(self): #How to pick a gesture from the list based on the users input
+    def choose_gestures(self):
+        # return super().choose_gestures() 
         print('These are the gesture options:')
         gestures_list = ['Enter 0 for Rock.', 'Enter 1 for Paper.', 'Enter 2 for scissors',  'Enter 3 for Lizard', 'Enter 4 for spock.']
         for gestures in gestures_list:
@@ -17,12 +18,14 @@ class Player: #list of gestures used in game
         user_input = int(input('Enter a number from 0-4 to select your Gesture:'))
         print(f'You picked {self.gestures[user_input]}.')
         self.selected_gesture = self.gestures[user_input]
+
+
         
     
-    def score_keeper(self, score):
-        self.player_one += score
-        self.player_two += score
-        return score
+    #def score_keeper(self, score):
+        #self.player_one += score
+        #self.player_two += score
+        #return score
         
 
 # my_gesture = Player()

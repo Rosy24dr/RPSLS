@@ -6,10 +6,9 @@ import time
 
 class Game:
     def __init__(self):
-        # self.player = Player()
         self.player_one = Human()
-        self.player_two = None
-        self.player_three = Ai()
+        self.player_two = Player()
+        
        
 
     
@@ -29,38 +28,52 @@ class Game:
     def single_or_multi(self): #How to ask the user if they want multiplayer or single mode and print thier input
         user_input = input('Please choose if single player or multiplayer mode. Enter single or multi:')
         if user_input == 'single':
-            print(f'You picked {user_input} player mode.')
+            self.players_two = Ai
+            self.players_turn()
+            #self.player_one.choose_gestures()
+            #self.player_two.choose_gestures()
+            
         else: 
             print(f'You picked {user_input} player mode.')
-        
+            #user_input = input('Would you like to go first? Enter y/n:')
+            if user_input == 'y':
+                self.player_two = Human
+                self.players_turn()
+                #self.player_one.choose_gestures()
+                #self.player_two.choose_gestures()
 
     def players_turn(self):
         user_input = input('Would you like to go first? Enter y/n:')
         if user_input == 'y':
             print('Ok, your will go first.')
             self.player_one.choose_gestures()
-        else:
-            print('Ai will go first.')
-            self.player_three.ai_random()
+            print('Now it is your turn to pick:')
+            self.player_two.choose_gestures()
+
+        elif user_input == 'n':
+            print('Player two will go first.')
+            self.player_two.choose_gestures()
+            print('Now it is your turn to pick:')
+            self.player_one.choose_gestures()
+        
             
-    def gesture_choice(self):
-       if self.player_one.choose_gestures == self.player_three.ai_random:
-           print(f"{self.player_one} , {self.player_three} is a tie")
-       elif self.player_one.choose_gestures == 'Rock':
-            if self.player_three.ai_random == 'Scissors':
-                print('Rock crushes Scissors')
+    # def gesture_choice(self):
+    #    if self.player_one.choose_gestures == self.player_two.choose_gestures:
+    #        print(f"{self.player_one} , {self.player_two} is a tie")
+    #    elif self.player_one.choose_gestures == 'Rock':
+    #         if self.player_two.choose_gestures == 'Scissors':
+    #             print('Rock crushes Scissors')
 
 
     def display_winner(self):
-
         pass
 
 
 
 my_game = Game()
-my_game.gesture_choice()
-# my_game.display_welcome_message()
-# my_game.display_rules()
+# my_game.gesture_choice()
+my_game.display_welcome_message()
+my_game.display_rules()
 my_game.single_or_multi()
-my_game.players_turn()
-# my_game.human_choose_gestures()
+# my_game.players_turn()
+
