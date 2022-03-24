@@ -1,4 +1,4 @@
-from practice_human import Human
+from human import Human
 
 
 class Player: #list of gestures used in game 
