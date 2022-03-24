@@ -21,6 +21,7 @@ class Player: #list of gestures used in game
     
     def score_keeper(self, score):
         self.player_one += score
+        self.player_two += score
         return score
         
 

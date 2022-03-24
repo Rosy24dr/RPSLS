@@ -43,10 +43,12 @@ class Game:
             self.player.choose_gestures()
        
         
-    
+    def choose_gesture(): 
+      
 
 
     def display_winner(self):
+
         pass
 
 
