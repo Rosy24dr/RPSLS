@@ -66,12 +66,11 @@ class Game:
     def gesture_choice(self):
        if self.player_one.selected_gesture == self.player_two.selected_gesture:
     #    self.player_one.choose_gestures() == self.player_two.choose_gestures():
-            print(f"{self.player_one.selected_gesture} , {self.player_two.selected_gesture} is a tie")
-       elif self.player_one.selected_gesture == 'Rock':
-            if self.player_two.selected_gesture == 'Scissors':
-                print('Rock crushes Scissors! you win')
-            else:
-                print('Paper covers Rock! You lose.')
+            print("It is a tie")
+       elif self.player_one.selected_gesture == 'Rock' and self.player_two.selected_gesture == 'Scissors':
+            print('Rock crushes Scissors! you win')
+       else:
+            print('Paper covers Rock! You lose.')
                 
 
 
@@ -96,11 +95,11 @@ class Game:
 
 
 my_game = Game()
-# my_game.players_turn()
-# my_game.gesture_choice()
-# my_game.gesture_choice()
+my_game.players_turn()
+my_game.gesture_choice()
+
 # my_game.display_welcome_message()
 # my_game.display_rules()
-my_game.single_or_multi()
+# my_game.single_or_multi()
 
 
