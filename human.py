@@ -2,16 +2,8 @@ from player import Player
 
 class Human(Player): 
     def __init__(self):
-        self.choose_player = [1,2]
+        # self.choose_player = [1,2]
         super().__init__()
-
-    def single_or_multi(self): #How to ask the user if they want multiplayer or single mode and print thier input
-        user_input = input('Please choose if single player or multiplayer mode. Enter single or multi:')
-        if user_input == 'single':
-            print(f'You picked {user_input} player mode.')
-        else: 
-            print(f'You picked {user_input} player mode.')
-        #Why is it only printing the user's input and not the rest
 
     def choose_gestures(self):
         return super().choose_gestures()

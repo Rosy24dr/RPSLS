@@ -6,9 +6,9 @@ import time
 
 class Game:
     def __init__(self):
-        self.human = Human()
-        self.player = Player()
-        self.player = Ai()
+        self.player_one = Human()
+        self.player_two = None
+       
        
 
     
@@ -25,16 +25,23 @@ class Game:
             time.sleep(2.0)
             print(rules)
     
+    def single_or_multi(self): #How to ask the user if they want multiplayer or single mode and print thier input
+        user_input = input('Please choose if single player or multiplayer mode. Enter single or multi:')
+        if user_input == 'single':
+            print(f'You picked {user_input} player mode.')
+        else: 
+            print(f'You picked {user_input} player mode.')
+        
 
-    # def players_turn(self):
-    #     user_input = input('Would you like to go first? Enter y/n:')
-    #     if user_input == 'y':
-    #         print('Ok, your will go first.')
-    #         self.player.choose_gestures()
-    #     else:
-    #         print('Ai will go first.')
-    #         self.player.choose_gestures()
-    #     #why is it only printing my else statment? 
+    def players_turn(self):
+        user_input = input('Would you like to go first? Enter y/n:')
+        if user_input == 'y':
+            print('Ok, your will go first.')
+            self.player.choose_gestures()
+        else:
+            print('Ai will go first.')
+            self.player.choose_gestures()
+       
         
     
 
