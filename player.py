@@ -3,17 +3,25 @@ class Player: #list of gestures used in game
                         #index 0  index 1  index 2  index 3  index 4
         self.gestures = ['rock', 'paper', 'scissors','lizard', 'spock'] 
        
-          
-    def game_gestures(self): #prompt to select gesture
-        print(self.gestures)
-    user_input = int(input('Select your Gesture:'))
-
-
-
+    def choose_gestures(self): #How to pick a gesture from the list based on the users input
+        print('These are the gesture options:')
+        gestures_list = ['Enter 0 for Rock.', 'Enter 1 for Paper.', 'Enter 2 for scissors',  'Enter 3 for Lizard', 'Enter 4 for spock.']
+        for gestures in gestures_list:
+            print(gestures)
+        user_input = int(input('Enter a number from 0-4 to select your Gesture:'))
+        print(f'You picked {self.gestures[user_input]}.')
+        
+    
+    
+my_gesture = Player()
+my_gesture.choose_gestures()
 
 
     
-
+#old one
+# def game_gestures(self): #prompt to select gesture
+    #     print(self.gestures)
+    # user_input = int(input('Select your Gesture:'))
 
 # # # how to call this page 
 # my_game = Player()
