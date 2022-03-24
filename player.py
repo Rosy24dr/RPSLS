@@ -13,8 +13,8 @@ class Player: #list of gestures used in game
         
     
     
-my_gesture = Player()
-my_gesture.choose_gestures()
+# my_gesture = Player()
+# my_gesture.choose_gestures()
 
 
     

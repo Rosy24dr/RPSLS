@@ -12,5 +12,5 @@ class Ai(Player):
         
 
 
-my_ai = Ai()
-my_ai.ai_random()
+# my_ai = Ai()
+# my_ai.ai_random()
