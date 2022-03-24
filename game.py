@@ -1,14 +1,15 @@
-from player import Player 
 from human import Human
+from player import Player
 from ai import Ai
 import time
 
 
 class Game:
     def __init__(self):
+        # self.player = Player()
         self.player_one = Human()
         self.player_two = None
-       
+        self.player_three = Ai()
        
 
     
@@ -37,14 +38,17 @@ class Game:
         user_input = input('Would you like to go first? Enter y/n:')
         if user_input == 'y':
             print('Ok, your will go first.')
-            self.player.choose_gestures()
+            self.player_one.choose_gestures()
         else:
             print('Ai will go first.')
-            self.player.choose_gestures()
-       
-        
-    def choose_gesture(): 
-      
+            self.player_three.ai_random()
+            
+    def gesture_choice(self):
+       if self.player_one.choose_gestures == self.player_three.ai_random:
+           print(f"{self.player_one} , {self.player_three} is a tie")
+       elif self.player_one.choose_gestures == 'Rock':
+            if self.player_three.ai_random == 'Scissors':
+                print('Rock crushes Scissors')
 
 
     def display_winner(self):
@@ -54,8 +58,9 @@ class Game:
 
 
 my_game = Game()
-my_game.display_welcome_message()
-my_game.display_rules()
-# # my_game.single_or_multi()
-# # my_game.players_turn()
+my_game.gesture_choice()
+# my_game.display_welcome_message()
+# my_game.display_rules()
+my_game.single_or_multi()
+my_game.players_turn()
 # my_game.human_choose_gestures()

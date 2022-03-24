@@ -1,4 +1,4 @@
-from human import Human
+
 
 
 class Player: #list of gestures used in game 
@@ -6,7 +6,7 @@ class Player: #list of gestures used in game
                         #index 0  index 1  index 2  index 3  index 4
         self.gestures = ['rock', 'paper', 'scissors','lizard', 'spock'] 
         self.selected_gesture = ""
-        self.player_one = Human()
+        self.player_one = None
         self. player_two = None
        
     def choose_gestures(self): #How to pick a gesture from the list based on the users input
