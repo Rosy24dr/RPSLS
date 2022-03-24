@@ -22,16 +22,16 @@ class Player: #list of gestures used in game
 
         
     
-    #def score_keeper(self, score):
-        #self.player_one += score
-        #self.player_two += score
-        #return score
+    # def score_keeper(self, score):
+    #     self.player_one += score
+    #     self.player_two += score
+    #     return score
         
 
-# my_gesture = Player()
-# my_gesture.choose_gestures()
+#my_gesture = Player()
+#my_gesture.choose_gestures()
 
-
+#print(my_gesture.selected_gesture)
     
 #old one
 # def game_gestures(self): #prompt to select gesture
