@@ -1,8 +1,13 @@
+from practice_human import Human
+
+
 class Player: #list of gestures used in game 
     def __init__(self):
                         #index 0  index 1  index 2  index 3  index 4
         self.gestures = ['rock', 'paper', 'scissors','lizard', 'spock'] 
         self.selected_gesture = ""
+        self.player_one = Human()
+        self. player_two = None
        
     def choose_gestures(self): #How to pick a gesture from the list based on the users input
         print('These are the gesture options:')
@@ -14,7 +19,11 @@ class Player: #list of gestures used in game
         self.selected_gesture = self.gestures[user_input]
         
     
-    
+    def score_keeper(self, score):
+        self.player_one += score
+        return score
+        
+
 # my_gesture = Player()
 # my_gesture.choose_gestures()
 
