@@ -63,32 +63,27 @@ class Game:
             self.player_one.choose_gestures()
         
             
-    def gesture_choice(self):
-       if self.player_one.selected_gesture == self.player_two.selected_gesture:
-    #    self.player_one.choose_gestures() == self.player_two.choose_gestures():
-            print("It is a tie")
-       elif self.player_one.selected_gesture == 'rock':
-            if self.player_two.selected_gesture == 'scissors':
-                print('Rock crushes Scissors! You win')
-            else:
-                print('Paper covers Rock! You lose.')
-                
+    def gesture_choice(self): 
+        while True:
+            if self.player_one.selected_gesture == self.player_two.selected_gesture:
+                print("It is a tie")
+            
+            elif self.player_one.selected_gesture == 'scissors' or self.player_one.selected_gesture == 'paper' or self.player_one.selected_gesture == 'rock' or self.player_one.selected_gesture == 'lizard' or self.player_one.selected_gesture == 'spock':
+                if self.player_two.selected_gesture == 'lizard' or self.player_two.selected_gesture == 'paper':
+                    print('Player one is the winner. Let the next round begin.')
+                    self.player_one.player_one_score += 1
 
-
-                    # ['Rock crushes Scissors',
-                    #  'Scissors cuts Paper', 
-                    #  'Paper covers Rock',
-                    #   'Rock crushes Lizard',
-                    #    'Lizard poisons Spock', 
-                    #    'Spock smashes Scissors',
-                    #   'Scissors decapitates Lizard', 
-                    #   'Lizard eats Paper']
+                elif self.player_two.selected_gesture == 'scissors' or self.player_two.selected_gesture == 'paper' or self.player_two.selected_gesture == 'rock' or self.player_two.selected_gesture == 'lizard' or self.player_two.selected_gesture == 'spock':
+                    if self.player_one.selected_gesture == 'lizard' or self.player_one.selected_gesture == 'paper':
+                        print('Player two is the winner.')
+                        self.player_one.player_one_score += 1
+            return
 
     #playing with the idea of keeping score here
-    # def score_keeper(self, score):
-    #     self.player_one += score
-    #     self.player_two += score
-    #     return score
+    def score_keeper(self, score):
+        self.player_one += score
+        self.player_two += score
+        return score
 
     def display_winner(self):
         pass
