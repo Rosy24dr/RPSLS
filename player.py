@@ -8,6 +8,9 @@ class Player: #list of gestures used in game
         self.selected_gesture = ""
         self.player_one = None
         self.player_two = None
+        # self.player_one_score = 0
+        # self.player_two_score = 0
+        # self.player = False
        
     def choose_gestures(self):
         # return super().choose_gestures() 
