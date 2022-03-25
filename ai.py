@@ -4,7 +4,7 @@ import random
 class Ai(Player):
     def __init__(self):
         super().__init__()
-        self.ai_randome = random.choice(self.gestures)
+        self.ai_random = random.choice(self.gestures)
     
     
     def choose_gestures(self):
@@ -13,11 +13,7 @@ class Ai(Player):
     
     
     
-    #def ai_random(self):
-        #random_gesture = random.choice(self.gestures)
-        #print(f'AI has picked the {random_gesture} gesture.')
+
         
 
 
-# my_ai = Ai()
-# my_ai.ai_random()

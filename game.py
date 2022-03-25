@@ -1,6 +1,5 @@
 from human import Human
 from player import Player
-from ai import Ai
 import time
 
 
@@ -9,14 +8,11 @@ class Game:
         self.player_one = Human()
         self.player_two = Player()
         
-       
-
-    
     def display_welcome_message(self):
         print('Welcome to the Rock Paper, Scissors, Lizard and Spock Game')
         
 
-    def display_rules(self): #displayig the rules with a 2.2 seconds delay
+    def display_rules(self): #displayig the rules 
         print('These are the rules:')
         rules_list = ['Rock crushes Scissors', 'Scissors cuts Paper', 'Paper covers Rock',
                       'Rock crushes Lizard', 'Lizard poisons Spock', 'Spock smashes Scissors',
@@ -25,30 +21,22 @@ class Game:
             time.sleep(2.0)
             print(rules)
     
-    def single_or_multi(self): #How to ask the user if they want multiplayer or single mode and print thier input
+    def single_or_multi(self): #How to ask the user if they want multiplayer or single mode and print their input
         user_input = input('Please choose if single player or multiplayer mode. Enter single or multi:')
         while True: 
             if user_input == 'single':
-                self.players_two = Ai
                 self.players_turn()
-            #self.player_one.choose_gestures()
-            #self.player_two.choose_gestures()
 
-            elif (user_input != 'single') or (user_input != 'multi'):
-                user_input= input('Please try selection again:')
+            elif user_input == 'multi':
+                    self.players_turn()
 
             else: 
-                print(f'You picked {user_input} player mode.')
-            #user_input = input('Would you like to go first? Enter y/n:')
-                if user_input == 'y':
-                    self.player_two = Human
-                    self.players_turn()
+                user_input= input('Please try selection again:') 
+                self.player_one.choose_gestures()
+
             return
 
-                #self.player_one.choose_gestures()
-                #self.player_two.choose_gestures()
-
-    def players_turn(self):
+    def players_turn(self): #asking the user if they want to go first or not
         user_input = input('Would you like to go first? Enter y/n:')
         if user_input == 'y':
             print('Ok, you will go first.')
@@ -62,39 +50,145 @@ class Game:
             print("Now it is player's one turn to pick:")
             self.player_one.choose_gestures()
         
+        else: 
+            user_input= input('Please try selection again:')
+        
             
-    def gesture_choice(self): 
-        while True:
+    def gesture_choice_comparison(self): #taking in the gesture choices and comparing them to pick a winner and incrementing the score
+        while self.player_one.player_one_score < 3:
             if self.player_one.selected_gesture == self.player_two.selected_gesture:
                 print("It is a tie")
-            
-            elif self.player_one.selected_gesture == 'scissors' or self.player_one.selected_gesture == 'paper' or self.player_one.selected_gesture == 'rock' or self.player_one.selected_gesture == 'lizard' or self.player_one.selected_gesture == 'spock':
-                if self.player_two.selected_gesture == 'lizard' or self.player_two.selected_gesture == 'paper':
-                    print('Player one is the winner. Let the next round begin.')
+                self.player_two.choose_gestures()
+
+            elif self.player_one.selected_gesture == 'scissors':
+                if  self.player_two.selected_gesture == 'paper'  or self.player_two.selected_gesture == 'spock' or self.player_two.selected_gesture == 'rock' or self.player_two.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
                     self.player_one.player_one_score += 1
+                    self.player_two.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    return
 
-                elif self.player_two.selected_gesture == 'scissors' or self.player_two.selected_gesture == 'paper' or self.player_two.selected_gesture == 'rock' or self.player_two.selected_gesture == 'lizard' or self.player_two.selected_gesture == 'spock':
-                    if self.player_one.selected_gesture == 'lizard' or self.player_one.selected_gesture == 'paper':
-                        print('Player two is the winner.')
-                        self.player_one.player_one_score += 1
+            elif self.player_two.selected_gesture == 'scissors':
+                if  self.player_one.selected_gesture == 'paper' or self.player_one.selected_gesture == 'spock' or self.player_one.selected_gesture == 'rock' or self.player_one.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    return
+                   
+            
+            elif self.player_one.selected_gesture == 'paper':
+                if  self.player_two.selected_gesture == 'scissors'  or self.player_two.selected_gesture == 'spock' or self.player_two.selected_gesture == 'rock' or self.player_two.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_one.player_one_score += 1
+                    self.player_two.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    return
+
+            elif self.player_two.selected_gesture == 'paper':
+                if  self.player_one.selected_gesture == 'scissors' or self.player_one.selected_gesture == 'spock' or self.player_one.selected_gesture == 'rock' or self.player_one.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    return
+            
+            elif self.player_one.selected_gesture == 'rock':
+                if  self.player_two.selected_gesture == 'paper'  or self.player_two.selected_gesture == 'spock' or self.player_two.selected_gesture == 'scissors' or self.player_two.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_one.player_one_score += 1
+                    self.player_two.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    return
+
+            elif self.player_two.selected_gesture == 'rock':
+                if  self.player_one.selected_gesture == 'paper' or self.player_one.selected_gesture == 'spock' or self.player_one.selected_gesture == 'scissors' or self.player_one.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    return
+
+            elif self.player_one.selected_gesture == 'lizard':
+                if  self.player_two.selected_gesture == 'paper'  or self.player_two.selected_gesture == 'spock' or self.player_two.selected_gesture == 'rock' or self.player_two.selected_gesture == 'scissors':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_one.player_one_score += 1
+                    self.player_two.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    return
+
+            elif self.player_two.selected_gesture == 'lizard':
+                if  self.player_one.selected_gesture == 'paper' or self.player_one.selected_gesture == 'spock' or self.player_one.selected_gesture == 'rock' or self.player_one.selected_gesture == 'scissors':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    return
+
+            elif self.player_one.selected_gesture == 'spock':
+                if  self.player_two.selected_gesture == 'paper'  or self.player_two.selected_gesture == 'scissors' or self.player_two.selected_gesture == 'rock' or self.player_two.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_one.player_one_score += 1
+                    self.player_two.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_one.player_one_score += 1
+                    return
+
+            elif self.player_two.selected_gesture == 'spock':
+                if  self.player_one.selected_gesture == 'paper' or self.player_one.selected_gesture == 'scissors' or self.player_one.selected_gesture == 'rock' or self.player_one.selected_gesture == 'lizard':
+                    print('Player one wins this round. Let the next round begin.')
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    self.player_one.choose_gestures()
+                    self.gesture_choice_comparison()
+                    self.player_two.player_one_score += 1
+                    return
             return
-
-    #playing with the idea of keeping score here
-    def score_keeper(self, score):
-        self.player_one += score
-        self.player_two += score
-        return score
-
-    def display_winner(self):
-        pass
+    def display_winner(self): #displaying the winner based on the score
+        if self.player_one.player_one_score > self.player_two.player_one_score:
+            print ('Player one is the overall winner!!! Congrats!')
+        else: 
+            print('Player two is the overall winner!!! Congrats!')
+        
 
 
 
-my_game = Game()
-my_game.display_welcome_message()
-my_game.display_rules()
-my_game.single_or_multi()
-# my_game.players_turn()
-my_game.gesture_choice()
 
 
